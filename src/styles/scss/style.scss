@@ -1,0 +1,33 @@
+/* VENDOR - Default fall-backs and external files.
+========================================================================== */
+
+@import 'vendor/_normalize.scss';
+
+
+/* BASE - Base Variable file along with starting point Mixins and Placeholders.
+========================================================================== */
+
+@import 'base/_variables.scss';
+@import 'base/_mixins.scss';
+
+
+/* FRAMEWORK - Structure and layout files.
+========================================================================== */
+
+@import 'framework/_grid.scss';
+@import 'framework/_global.scss';
+/*@import 'framework/_layout.scss';
+@import 'framework/_breakpoints.scss';*/
+@import 'base/_placeholders.scss';
+
+/* MODULES - Re-usable site elements.
+========================================================================== */ 
+
+@import 'modules/_header.scss';
+@import 'modules/_view.scss';
+@import 'modules/_form.scss';
+@import 'modules/_input.scss';
+@import 'modules/_footer.scss';
+/*@import 'modules/_buttons.scss';
+@import 'modules/_lists.scss';
+@import 'modules/_tabs.scss';*/

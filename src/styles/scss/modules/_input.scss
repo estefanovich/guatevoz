@@ -1,0 +1,75 @@
+.gtv {
+	&-input {
+		height: 45px;
+		color: #5f5f5f;
+		line-height: 19px;
+		margin-bottom: 20px;
+		@media screen and (max-width: 767px){margin-bottom:15px;}
+		label {
+			position: absolute;
+			font-size: 12px;
+			padding: 0 22px;
+		}
+		input {
+			background-color: #fff;
+			height: 45px;
+			padding: 0px 20px 0px 20px;
+			width: 100%;
+			border: 0;
+			outline: none;
+			cursor: text;
+			color: #5f5f5f;
+			font-size: 14px;
+			outline: none;
+			position: relative;
+			cursor: text;
+			border: 1px solid #CCCCCC;
+			border-radius: 4px;
+			-webkit-transition: all 200ms ease;
+			-moz-transition: all 200ms ease;
+			-ms-transition: all 200ms ease;
+			-o-transition: all 200ms ease;
+			transition: all 200ms ease;
+			border: 2px solid #fff;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			&:focus {
+				border: 2px solid #4da1ff;
+			}
+		}
+		.gtv-activeInput {
+			padding: 10px 20px 0px 20px;
+		}
+	}
+	&-input-in {
+		top: 3px;
+		visibility: hidden;
+		opacity: 0;
+		height: 14px;
+		color: #4da1ff;
+		font-size: 12px;
+		z-index: 1;
+		-webkit-transition: all 200ms ease;
+		-moz-transition: all 200ms ease;
+		-ms-transition: all 200ms ease;
+		-o-transition: all 200ms ease;
+		transition: all 200ms ease;
+	}
+	&-activeLabel {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+.has-error{
+	&-input {
+		input {
+			border: 2px solid #FF0000 !important;	
+		}
+	}
+	&-select {
+		select {
+			border: 2px solid #FF0000 !important;	
+		}
+	}
+}	

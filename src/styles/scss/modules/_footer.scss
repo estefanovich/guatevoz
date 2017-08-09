@@ -1,0 +1,45 @@
+/*Footer section*/
+.gtv {
+	&-footer {
+		padding: 15px;
+		@media screen and (max-width: 767px){padding: 15px 0;}
+	}
+	&-footerText {
+		color: #9B9B9B;
+		font-size: 12px;
+		@media screen and (max-width: 767px){text-align:center;}
+	}
+	&-fbShare {
+		position: absolute;
+		top: -2px;
+		right: 0;
+		z-index: 1;
+		@media screen and (max-width: 767px){
+			position: relative;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+		a {
+			color: #9B9B9B;
+			font-size: 12px;
+			text-decoration: none;
+			span {
+				display: inline-block;
+				vertical-align: middle;
+			}
+			&:after {
+				content: '';
+				width: 18px;
+				height: 18px;
+				background: url('../img/icons/facebook.svg') no-repeat center;
+				background-size: cover;
+				display: inline-block;
+				vertical-align: middle;
+				margin-left: 5px;
+				margin-top: -1px;
+				background-color: #3B5998;
+				border-radius: 50%;
+			}
+		}
+	}
+}
