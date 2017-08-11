@@ -13,7 +13,7 @@ phases:
       - npm install
   post_build:
     commands:
-      - aws s3 sync dist s3://qa.guatevoz.com/
+      - aws s3 sync --acl public-read dist s3://qa.guatevoz.com/
       - echo Build completed on `date`
 artifacts:
   files:
