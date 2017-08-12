@@ -8,7 +8,7 @@ module.exports = {
   /** The name of the directory containing the application source code */
   srcDir: 'src',
   /** The file name of the application's entry point */
-  main: 'main',
+  main: 'app',
   /** The name of the directory in which to emit compiled assets */
   outDir: 'dist',
   /** The base path for all projects assets (relative to the website root) */
@@ -22,12 +22,5 @@ module.exports = {
   /** Whether to enable verbose logging */
   verbose: false,
   /** The list of modules to bundle separately from the core application code */
-  vendors: [
-    'react',
-    'react-dom',
-    'redux',
-    'react-redux',
-    'redux-thunk',
-    'react-router',
-  ],
+  vendors: ['react', 'react-dom', 'react-router-dom']
 }
