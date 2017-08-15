@@ -36,11 +36,7 @@ const config = {
     ],
     extensions: [
       '*', '.js', '.jsx', '.json'
-    ],
-    alias: {
-      "react": "preact-compat",
-      "react-dom": "preact-compat"
-    }
+    ]
   },
   externals: project.externals,
   module: {

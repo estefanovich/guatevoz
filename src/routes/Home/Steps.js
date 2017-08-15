@@ -59,8 +59,6 @@ class Steps extends React.Component {
     }
 
     inputHotValidation(input) {
-        console.log('valid email', this.refs.firstName.value);
-
         switch (input) {
             case 'firstName':
                 if (this.refs.firstName.value == '') {
@@ -131,38 +129,44 @@ class Steps extends React.Component {
     getFirstStep() {
         var firstStepData = new Object(),
             errorCounter = 0;
-        firstStepData['first-name'] = this.refs.firstName.value;
-        firstStepData['last-name'] = this.refs.lastName.value;
-        firstStepData['gender'] = this.state.gender;
+        
         firstStepData['zip-code'] = this.refs.zipCode.value;
-
-        if (firstStepData['first-name'] == '') {
-            this.setState({validFirstName: false});
-            errorCounter++;
-        } else {
-            this.setState({validFirstName: true});
-        }
-        if (firstStepData['last-name'] === '') {
-            this.setState({validLastName: false});
-            errorCounter++;
-        } else {
-            this.setState({validLastName: true});
-        }
-        if (firstStepData['gender'] === "noselect") {
-            this.setState({validGender: false});
-            errorCounter++;
-        } else {
-            this.setState({validGender: true});
-        }
         if (!this.validateZipCode(firstStepData['zip-code'])) {
             this.setState({validZipCode: false});
             errorCounter++;
         } else {
             this.setState({validZipCode: true});
         }
+
+
+        firstStepData['birth-place'] = this.state.birthPlace;
+        if (firstStepData['birth-place'] == 'noselect') {
+            this.setState({validBirthPlace: false});
+            errorCounter++;
+        } else {
+            this.setState({validBirthPlace: true});
+        }
+
+        firstStepData['department'] = this.state.department;
+        if (firstStepData['department'] == 'noselect') {
+            this.setState({validDepartment: false});
+            errorCounter++;
+        } else {
+            this.setState({validDepartment: true});
+        }
+
+        firstStepData['municipality'] = this.state.municipality;
+        if (firstStepData['municipality'] == 'noselect') {
+            this.setState({validMunicipality: false});
+            errorCounter++;
+        } else {
+            this.setState({validMunicipality: true});
+        }
+
         if (errorCounter == 0) {
             this.setState({firstStepData: firstStepData, showStepOne: false, showStepTwo: true});
         }
+
     }
 
     getDepartmentName(code) {
@@ -203,11 +207,32 @@ class Steps extends React.Component {
     getSecondStep() {
         var secondStepData = new Object(),
             errorCounter = 0;
-        secondStepData['e-mail'] = this.refs.email.value;
-        secondStepData['birth-place'] = this.state.birthPlace;
-        secondStepData['department'] = this.state.department;
-        secondStepData['municipality'] = this.state.municipality;
 
+        secondStepData['first-name'] = this.refs.firstName.value;
+        if (secondStepData['first-name'] == '') {
+            this.setState({validFirstName: false});
+            errorCounter++;
+        } else {
+            this.setState({validFirstName: true});
+        }
+
+        secondStepData['last-name'] = this.refs.lastName.value;
+        if (secondStepData['last-name'] === '') {
+            this.setState({validLastName: false});
+            errorCounter++;
+        } else {
+            this.setState({validLastName: true});
+        }
+
+        secondStepData['gender'] = this.state.gender;
+        if (secondStepData['gender'] === "noselect") {
+            this.setState({validGender: false});
+            errorCounter++;
+        } else {
+            this.setState({validGender: true});
+        }
+
+        secondStepData['e-mail'] = this.refs.email.value;
         if (!this.validateEmail(secondStepData['e-mail'])) {
             this.setState({validEmail: false});
             errorCounter++;
@@ -215,33 +240,11 @@ class Steps extends React.Component {
             this.setState({validEmail: true});
         }
 
-        if (secondStepData['birth-place'] == 'noselect') {
-            this.setState({validBirthPlace: false});
-            errorCounter++;
-        } else {
-            this.setState({validBirthPlace: true});
-        }
-
-        if (secondStepData['department'] == 'noselect') {
-            this.setState({validDepartment: false});
-            errorCounter++;
-        } else {
-            this.setState({validDepartment: true});
-        }
-
-        if (secondStepData['municipality'] == 'noselect') {
-            this.setState({validMunicipality: false});
-            errorCounter++;
-        } else {
-            this.setState({validMunicipality: true});
-        }
-
         if (errorCounter == 0) {
 
             let sendData = JSON.stringify(Object.assign(this.state.firstStepData, secondStepData)),
                 getDepartment = this.getDepartmentName,
                 goToMap = this.goToMap;
-
             // Submit Data
             $
                 .ajax({type: 'POST', url: 'https://api.guatevoz.com/users/', data: sendData, contentType: 'application/json'})
@@ -286,74 +289,28 @@ class Steps extends React.Component {
         const {showStepTwo} = this.state;
         return (
             <div>
-
                 {showStepOne && (
                     <form id="gtvForm" action={this.continue}>
-                        <div className="gtv-formC" id="gtvForm">
-                            <div className="row">
-                                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div
-                                        className="gtv-input"
-                                        className={this.validateInput('input', this.state.validFirstName)}>
-                                        <label className="gtv-input-in">Nombre</label>
-                                        <input id="nombre" ref="firstName" type="text" placeholder="Nombre"/>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div className={this.validateInput('input', this.state.validLastName)}>
-                                        <label className="gtv-input-in">Apellido</label>
-                                        <input id="apellido" ref="lastName" type="text" placeholder="Apellido"/>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div className={this.validateInput('select', this.state.validGender)}>
-                                        <div className="gtv-selectContain">
-                                            <div className="gtv-select-arrow"></div>
-                                        </div>
-                                        <label className="gtv-select-in" id="genero">Genero</label>
-                                        <select onChange={this.genderChange} value={this.state.gender}>
-                                            <option value="noselect">Genero</option>
-                                            <option value="F">Femenino</option>
-                                            <option value="M">Masculino</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div className={this.validateInput('input', this.state.validZipCode)}>
-                                        <label className="gtv-input-in">Zip Code</label>
-                                        <input id="zipcode" ref="zipCode" type="tel" placeholder="Zip Code"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="gtv-buttonForm" id="gtv-button" onClick={this.continue}>
-                                <input type="submit" className="gtv-buttonText" value="Continuar" name=""/>
-                                <div className="gtv-buttonFormGB"></div>
-                            </div>
-                        </div>
-                    </form>
-                )}
-                {showStepTwo && (
-                    <form id="gtvForm" action={this.finishSecondStep}>
                         <div className="gtv-formD" id="gtvForm">
                             <div className="row">
-                                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div className={this.validateInput('input', this.state.validEmail)}>
-                                        <label className="gtv-input-in">Email</label>
-                                        <input id="email" ref="email" type="text" placeholder="Email"/>
-                                    </div>
-                                </div>
                                 <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div className={this.validateInput('select', this.state.validBirthPlace)}>
                                         <div className="gtv-selectContain">
                                             <div className="gtv-select-arrow"></div>
                                         </div>
-                                        <label className="gtv-select-in" id="lugar">Lugar de nacimiento</label>
+                                        <label className="gtv-select-in" id="lugar">País de nacimiento</label>
                                         <select onChange={this.birthPlaceChange} value={this.state.birthPlace}>
-                                            <option value="noselect">Lugar de nacimiento</option>
+                                            <option value="noselect">País de nacimiento</option>
                                             <option value="GT">Guatemala</option>
                                             <option value="US">Estados Unidos</option>
                                             <option value="NA">Otro</option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div className={this.validateInput('input', this.state.validZipCode)}>
+                                        <label className="gtv-input-in">Zip Code en USA</label>
+                                        <input id="zipcode" ref="zipCode" type="tel" placeholder="Zip Code en USA"/>
                                     </div>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -403,13 +360,58 @@ class Steps extends React.Component {
                                     </div>
                                 </div>
                             </div>
+                            <div className="gtv-buttonForm" id="gtv-button" onClick={this.continue}>
+                                <input type="submit" className="gtv-buttonText" value="Continuar" name=""/>
+                                <div className="gtv-buttonFormGB"></div>
+                            </div>
+                        </div>
+                    </form>
+                )}
+                {showStepTwo && (
+                    <form id="gtvForm" action={this.finishSecondStep}>
+                        <div className="gtv-formC" id="gtvForm">
+                            <div className="row">
+                                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div
+                                        className="gtv-input"
+                                        className={this.validateInput('input', this.state.validFirstName)}>
+                                        <label className="gtv-input-in">Nombre</label>
+                                        <input id="nombre" ref="firstName" type="text" placeholder="Nombre"/>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div className={this.validateInput('input', this.state.validLastName)}>
+                                        <label className="gtv-input-in">Apellido</label>
+                                        <input id="apellido" ref="lastName" type="text" placeholder="Apellido"/>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div className={this.validateInput('select', this.state.validGender)}>
+                                        <div className="gtv-selectContain">
+                                            <div className="gtv-select-arrow"></div>
+                                        </div>
+                                        <label className="gtv-select-in" id="genero">Género</label>
+                                        <select onChange={this.genderChange} value={this.state.gender}>
+                                            <option value="noselect">Género</option>
+                                            <option value="F">Femenino</option>
+                                            <option value="M">Masculino</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div className={this.validateInput('input', this.state.validEmail)}>
+                                        <label className="gtv-input-in">Email</label>
+                                        <input id="email" ref="email" type="text" placeholder="Email"/>
+                                    </div>
+
+                                </div>
+                            </div>
                             <div className="gtv-buttonForm" id="gtv-button" onClick={this.finishSecondStep}>
                                 <input type="submit" className="gtv-buttonText" value="Unirme ahora!" name=""/>
                                 <div className="gtv-buttonFormGB"></div>
                             </div>
                         </div>
                     </form>
-
                 )}
             </div>
         );
