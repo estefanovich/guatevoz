@@ -251,9 +251,9 @@ class Steps extends React.Component {
                 .success(function (data, textStatus, xhr) {
                     //console.log(xhr.status);
                     goToMap({
-                        name: sendData['first-name'],
-                        department: getDepartment(sendData['department']),
-                        municipality: sendData['municipality']
+                        name: secondStepData['first-name'],
+                        department: getDepartment(this.state.firstStepData['department']),
+                        municipality: this.state.firstStepData['municipality']
                     });
                 })
                 .fail(function (jqXhr) {
