@@ -242,7 +242,8 @@ class Steps extends React.Component {
 
         if (errorCounter == 0) {
 
-            let sendData = JSON.stringify(Object.assign(this.state.firstStepData, secondStepData)),
+            let firstStepDataToSend = this.state.firstStepData,
+                sendData = JSON.stringify(Object.assign(firstStepDataToSend, secondStepData)),
                 getDepartment = this.getDepartmentName,
                 goToMap = this.goToMap;
             // Submit Data
@@ -252,8 +253,8 @@ class Steps extends React.Component {
                     //console.log(xhr.status);
                     goToMap({
                         name: secondStepData['first-name'],
-                        department: getDepartment(this.state.firstStepData['department']),
-                        municipality: this.state.firstStepData['municipality']
+                        department: getDepartment(firstStepDataToSend['department']),
+                        municipality: firstStepDataToSend['municipality']
                     });
                 })
                 .fail(function (jqXhr) {
