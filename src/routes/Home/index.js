@@ -115,6 +115,8 @@ class Home extends React.Component {
             formApp.init();
             setTimeout(function () {
                 formApp.init();
+				$
+                .ajax({type: 'POST', url: 'https://api.guatevoz.com/users/?mode=pre-warm', data: {}, contentType: 'application/json'});
             }, 200);
 
         });
