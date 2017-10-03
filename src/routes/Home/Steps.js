@@ -257,9 +257,23 @@ class Steps extends React.Component {
                         municipality: firstStepDataToSend['municipality']
                     });
                 })
-                .fail(function (jqXhr) {
-                    alert('Error al enviar el formulario Intenta nuevamente mas tarde.');
-
+                .fail(function (jqXHR, exception) {
+                               
+                switch(jqXHR.status) {
+                 case 500:
+                   alert('Un error ocurrio procesando tu solicitud. Favor intentarlo nuevamente.');
+                 break;
+                 case 400:
+                   alert('Revisa tus datos e intentalo nuevamente.');
+                 break;
+                 default:
+                    goToMap({
+                        name: secondStepData['first-name'],
+                        department: getDepartment(firstStepDataToSend['department']),
+                        municipality: firstStepDataToSend['municipality']
+                    });
+                }
+                
                 });
         }
 
