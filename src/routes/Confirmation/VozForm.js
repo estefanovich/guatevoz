@@ -1,5 +1,4 @@
 import React from 'react';
-import Steps from './Steps'
 
 class VozForm extends React.Component {
 
@@ -10,8 +9,8 @@ class VozForm extends React.Component {
   render() {
     return (
       <div className="gtv-formContainer">
-        <h2>¡Unete a nosotros para conocer mas de la comunidad chapina en USA!</h2>
-        <Steps/>
+        <h2>¡Gracias por registrarte en GuateVoz.com!</h2>
+		Pronto recibirás más información de nuestra comunidad.
       </div>
     );
   }
