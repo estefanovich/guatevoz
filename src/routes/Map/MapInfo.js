@@ -4,7 +4,7 @@ class MapInfo extends React.Component {
         super(props);
         this.state = {
             template: [(
-                    <p key="-1" className="gtv-state">Da click a un Estado!
+                    <p key="-1" className="gtv-state">¡Da click a un Estado!
                     </p>
                 )]
         }

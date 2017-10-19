@@ -10,7 +10,7 @@ class VozForm extends React.Component {
   render() {
     return (
       <div className="gtv-formContainer">
-        <h2>¡Unete a nosotros para conocer mas de la comunidad chapina en USA!</h2>
+        <h2>¡Únete a nosotros para conocer mas de la comunidad chapina en USA!</h2>
         <Steps/>
       </div>
     );

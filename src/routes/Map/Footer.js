@@ -11,7 +11,7 @@ export const Footer = () => (
         <footer className="gtv-footer">
             <div className="container">
                 <div className="gtv-fbShare">
-                    <a href="https://www.facebook.com/guatevoz/" target="_blank">
+                    <a href="https://www.facebook.com/GuateVozUSA/" target="_blank">
                         <span>www.facebook.com/GuateVoz</span>
                     </a>
                 </div>

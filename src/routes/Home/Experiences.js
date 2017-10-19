@@ -11,19 +11,19 @@ export const Experiences = () => (
 				<div className="swiper-wrapper">
 					<Experience 
 						name="Mirian Aldana"
-						quote="Estoy muy contenta, encontre el unico lugar donde me contacte con los chapines de mi estado!"
+						quote="Estoy muy contenta. ¡Encontre el único lugar donde me contacté con los chapines de mi estado!"
 						location="Los Angeles, CA"
 						picture="gtv-quote-img gtv-quoteFirst"
 					/>
 					<Experience 
 						name="Luis Gonzalez"
-						quote="No sabia que habian tantos chapines en mi ciudad! Gracias Chapines en USA!!"
+						quote="¡No sabía que habían tantos chapines en mi ciudad! ¡Gracias Chapines en USA!!"
 						location="Austin, TX"
 						picture="gtv-quote-img gtv-quoteSecond"
 					/>
 					<Experience 
 						name="Juan Fernandez"
-						quote="Gracias a esta comunidad he conocido mas chapines en Providence!"
+						quote="¡Gracias a esta comunidad he conocido más chapines en Providence!"
 						location="Providence, RI"
 						picture="gtv-quote-img gtv-quoteThird"
 					/>

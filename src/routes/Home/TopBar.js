@@ -10,7 +10,7 @@ export const TopBar = () => (
 		<div className="container">
 			<h1 className="gtv-mainTitle">¿Sabes cúantos <span>Guatemaltecos</span> vivimos en Estados Unidos?</h1>
 			<VozForm />
-			<p className="gtv-certified">Nuestro sitio cuenta con certificado de seguridad, tu informacion esta segura.</p>
+			<p className="gtv-certified">Nuestro sitio cuenta con certificado de seguridad, tu información esta segura.</p>
 		</div>
 	</div>
 )
