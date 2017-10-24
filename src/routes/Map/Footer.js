@@ -18,7 +18,7 @@ class Footer extends React.Component {
             .ui({
                 method: 'share',
                 display: 'popup',
-                href: 'https://www.facebook.com/guatevoz/'
+                href: 'https://www.facebook.com/GuateVozUSA/'
             }, function (response) {});
     }
 
@@ -34,8 +34,8 @@ class Footer extends React.Component {
                 <footer className="gtv-footer">
                     <div className="container">
                         <div className="gtv-fbShare">
-                            <a href="https://www.facebook.com/guatevoz/" target="_blank">
-                                <span>www.facebook.com/GuateVoz</span>
+                            <a href="https://www.facebook.com/GuateVozUSA/" target="_blank">
+                                <span>www.facebook.com/GuateVozUSA</span>
                             </a>
                         </div>
                         <p className="gtv-footerText">2017 GuateVoz.com Todos los derechos reservados.</p>
